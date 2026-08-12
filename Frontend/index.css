@@ -1,0 +1,114 @@
+/* =========================================
+   PROFILE MODAL & SPLIT FOOTER
+   ========================================= */
+.profile-modal-container {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.edit-profile-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: -0.75rem;
+}
+
+.profile-footer-split {
+  display: flex !important;
+  justify-content: space-around !important; /* Pushes delete left, actions right */
+  align-items: center;
+  width: 100%;
+}
+
+.action-group-right {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: 11.5rem;
+  flex: 1;
+}
+
+/* Subtle, Text-Only Danger Button (Left side) */
+.btn-text-danger {
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.95);
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.2s;
+  margin-left: -3rem;
+}
+
+.app.light .btn-text-danger {
+  border: 1px solid rgba(239, 68, 68, 0.95);
+  color: #ef4444;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.2);
+  }
+}
+
+.btn-text-danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* =========================================
+   DANGER/WARNING VIEW STYLES
+   ========================================= */
+.danger-heading {
+  color: #ef4444 !important;
+}
+
+.danger-warning-box {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+
+.danger-warning-box i {
+  color: #ef4444;
+  font-size: 1.5rem;
+  margin-top: 0.2rem;
+}
+
+.danger-text-content h4 {
+  color: #ef4444;
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.danger-text-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.app.light .danger-text-content p {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Solid Danger Button (Final Confirmation) */
+.btn-danger-fill {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.btn-danger-fill:hover {
+  background-color: #dc2626 !important;
+}

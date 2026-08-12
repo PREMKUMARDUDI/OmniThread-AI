@@ -1,0 +1,708 @@
+.sidebar {
+  background-color: #171717;
+  color: #b4b4b4;
+  height: 100vh;
+  flex: 0.225;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0;
+  transition: margin-left 0.4s ease-in-out;
+}
+
+.sidebar.collapsed {
+  margin-left: -300px;
+  background-color: transparent;
+}
+
+.app.light .sidebar.collapsed {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  padding-inline-start: 0.6rem;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  border: 1.75px solid transparent;
+}
+
+button .logoAndTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.logo {
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+button .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+button span {
+  cursor: pointer;
+}
+
+.slider {
+  height: 0.85rem;
+  width: 0.8rem;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 0.4rem;
+  padding: 0.2rem;
+  padding-inline-start: 0.2rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.slider-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: opacity 0.3s ease;
+}
+
+.collapsed-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.sidebar.collapsed .slider-icons {
+  opacity: 0;
+}
+
+.sidebar.collapsed .slider {
+  border: 2px solid transparent;
+
+  &:hover {
+    border: 2px solid rgba(255, 255, 255, 0.75);
+  }
+}
+
+.app.light .sidebar.collapsed .slider {
+  border: 2px solid transparent;
+
+  &:hover {
+    border: 2px solid rgb(0, 0, 0);
+  }
+}
+
+.sidebar.collapsed .collapsed-logo {
+  opacity: 1;
+}
+
+.sidebar.collapsed .slider:hover .slider-icons {
+  opacity: 1;
+}
+
+.sidebar.collapsed .slider:hover .collapsed-logo {
+  opacity: 0;
+}
+
+.rod {
+  height: 0.68rem;
+  width: 0.01rem;
+  border: 1.35px solid rgba(255, 255, 255, 0.75);
+  border-radius: 0.25rem;
+}
+
+.fa-angle-left,
+.fa-angle-right {
+  font-size: 0.65rem;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.slider:hover .fa-angle-left {
+  opacity: 1;
+}
+
+.slider:hover .fa-angle-right {
+  opacity: 1;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  /* gap: 0.25rem; */
+  padding-inline: 0.6rem;
+}
+
+.sidebar.collapsed .options {
+  margin-top: -20.5rem;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(180, 180, 180, 0.05);
+  }
+}
+
+.sidebar.collapsed .optionItem {
+  justify-content: flex-end;
+  background-color: transparent;
+  padding-inline: 0.45rem;
+
+  &:hover {
+    padding-inline: 0.4rem;
+  }
+}
+
+.app.light .sidebar.collapsed .optionItem {
+  background-color: transparent;
+}
+
+.sidebar.collapsed .optionItem i {
+  font-size: 1rem;
+}
+
+.sidebar.collapsed .optionItem span {
+  display: none;
+}
+
+.recent {
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+  padding-inline-start: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.history {
+  padding: 10px;
+  padding-top: 0;
+  margin-top: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar.collapsed .history {
+  display: none;
+}
+
+.history::-webkit-scrollbar {
+  width: 6px;
+  display: none;
+}
+
+.history:hover::-webkit-scrollbar {
+  display: block;
+}
+
+.history::-webkit-scrollbar-track {
+  background: rgba(128, 128, 128, 0.15);
+  border-radius: 10px;
+}
+
+.history::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.history::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 255, 255, 0.5);
+}
+
+.history li {
+  list-style-type: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 0.5rem;
+  overflow-wrap: break-word;
+  position: relative;
+
+  &:hover,
+  &.active {
+    background-color: rgb(180, 180, 180, 0.05);
+  }
+}
+
+.history li .fa-trash {
+  font-size: 1rem;
+
+  &:hover {
+    color: #f87171;
+  }
+}
+
+/* =========================================
+   THREAD ITEMS & 3-DOTS MENU
+   ========================================= */
+
+/* Add truncation so long titles don't push the 3-dots off screen */
+.thread-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85%;
+}
+
+.action-icon {
+  opacity: 0;
+  font-size: 1.1rem;
+  padding: 0.25rem 0.05rem;
+  color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.3rem;
+  transition: all 0.2s;
+}
+
+.action-icon:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.app.light .action-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #171717;
+}
+
+.history li:hover .action-icon {
+  opacity: 1;
+}
+
+/* Dropdown Menu Popup */
+.thread-dropdown {
+  position: absolute;
+  top: 2.75rem;
+  right: 0.1rem;
+  width: 8rem;
+  background-color: #323232;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.app.light .thread-dropdown {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: #ececec;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.dropdown-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-menu-item.delete-item:hover {
+  background-color: rgba(239, 68, 68, 0.15); /* Soft red hover */
+  color: #ef4444;
+}
+
+.app.light .dropdown-menu-item.delete-item:hover {
+  background-color: rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+}
+
+.app.light .dropdown-menu-item {
+  color: #171717;
+}
+
+.app.light .dropdown-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   RENAME MODAL UI
+   ========================================= */
+.rename-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  box-sizing: border-box; /* Ensures padding doesn't overflow container */
+}
+
+.rename-input:focus {
+  border-color: #578fe9;
+}
+
+.app.light .rename-input {
+  background-color: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #171717;
+}
+
+.app.light .rename-input:focus {
+  border-color: #578fe9;
+}
+
+/* Shared confirm button (Blue) */
+.btn-confirm {
+  background-color: #578fe9 !important;
+  border: 1px solid #578fe9 !important;
+  color: white;
+}
+
+.btn-confirm:hover {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* --------------------------------- */
+/* LIGHT MODE OVERRIDES */
+.app.light .sidebar {
+  background-color: #ffffff;
+}
+
+.app.light .logo {
+  transform: scale(1.15);
+}
+
+.app.light .collapsed-logo {
+  width: 3.5rem;
+  height: 2rem;
+}
+
+.app.light .slider,
+.app.light .rod {
+  border-color: #171717;
+}
+
+.app.light .recent {
+  color: #888;
+}
+
+.app.light .optionItem:hover,
+.app.light .history li:hover,
+.app.light .history li.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Darken scrollbars for light mode visibility */
+.app.light .history::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   SEARCH MODAL UI & ANIMATIONS
+   ========================================= */
+
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000; /* Ensure it stays above everything */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 12vh;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.search-modal {
+  background-color: #212121;
+  width: 35rem;
+  max-width: 90%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ececec;
+}
+
+.close-icon {
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s;
+}
+
+.close-icon:hover {
+  color: #f87171;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-input-wrapper i {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-input-wrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.search-results {
+  padding: 0.5rem;
+  margin: 0;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.search-results li {
+  list-style-type: none;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  color: #e3e3e3;
+  margin-bottom: 0.2rem;
+}
+
+.search-results li i {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-results li:hover,
+.search-results li.search-selected {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   LIGHT MODE OVERRIDES FOR SEARCH MODAL
+   ========================================= */
+.app.light .search-modal {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.app.light .search-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app.light .search-header h3 {
+  color: #171717;
+}
+
+.app.light .close-icon {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.app.light .search-input-wrapper {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app.light .search-input-wrapper i,
+.app.light .search-results li i {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.app.light .search-input-wrapper input {
+  color: #171717;
+}
+
+.app.light .search-results li {
+  color: #333;
+}
+
+.app.light .search-results li:hover,
+.app.light .search-results li.search-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.app.light .no-results {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar rules for search results */
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.app.light .search-results::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   DELETE CONFIRMATION MODAL
+   ========================================= */
+
+/* Overrides the search modal width for a tighter, alert-style box */
+.delete-modal {
+  width: 25rem;
+}
+
+.delete-body {
+  padding: 1.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.delete-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Override the global 'button' rules for these specific buttons */
+.delete-footer button {
+  display: inline-flex;
+  margin: 0;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ececec;
+}
+
+.btn-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.btn-delete {
+  background-color: #ef4444 !important; /* Red */
+  border: 1px solid #ef4444 !important;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626 !important; /* Darker red on hover */
+  border-color: #dc2626 !important;
+}
+
+/* =========================================
+   LIGHT MODE OVERRIDES FOR DELETE MODAL
+   ========================================= */
+
+.app.light .delete-body {
+  color: #555;
+}
+
+.app.light .delete-footer {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app.light .btn-cancel {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: #171717;
+}
+
+.app.light .btn-cancel:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.4) !important;
+}
