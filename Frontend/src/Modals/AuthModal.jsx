@@ -3,7 +3,7 @@ import { MyContext } from "../context/MyContext";
 import { clientServer } from "../api/client.js";
 
 export function AuthModal() {
-  const { setToken, setUser, setIsAuthModalOpen } = useContext(MyContext);
+  const { setToken, user, setUser, setIsAuthModalOpen } = useContext(MyContext);
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
@@ -13,6 +13,12 @@ export function AuthModal() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleOverlayClick = () => {
+    if (user) {
+      setIsAuthModalOpen(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,10 +43,21 @@ export function AuthModal() {
   };
 
   return (
-    <div className="search-overlay auth-overlay">
-      <div className="search-modal">
+    <div className="search-overlay auth-overlay" onClick={handleOverlayClick}>
+      <div className="search-modal" onClick={(e) => e.stopPropagation()}>
         <div className="search-header">
-          <h3>{isLogin ? "Welcome Back" : "Create Account"}</h3>
+          {user ? (
+            <h3>Add Account</h3>
+          ) : (
+            <h3>{isLogin ? "Welcome Back" : "Create Account"}</h3>
+          )}
+
+          {user && (
+            <i
+              className="fa-solid fa-xmark close-icon"
+              onClick={() => setIsAuthModalOpen(false)}
+            ></i>
+          )}
         </div>
         <form
           onSubmit={handleSubmit}
