@@ -207,26 +207,18 @@ function Sidebar() {
       <button>
         <span className="logoAndTitle" onClick={createNewChat}>
           {isDark ? (
-            <img src="src/assets/whitelogo.png" alt="logo" className="logo" />
+            <img src="/whitelogo.png" alt="logo" className="logo" />
           ) : (
-            <img src="src/assets/blacklogo.png" alt="logo" className="logo" />
+            <img src="/blacklogo.png" alt="logo" className="logo" />
           )}
           <span className="title">OmniThread</span>
         </span>
         <span>
           <span className="slider" onClick={() => setIsCollapsed(!isCollapsed)}>
             {isDark ? (
-              <img
-                src="src/assets/whitelogo.png"
-                alt="icon"
-                className="collapsed-logo"
-              />
+              <img src="/whitelogo.png" alt="icon" className="collapsed-logo" />
             ) : (
-              <img
-                src="src/assets/blacklogo.png"
-                alt="icon"
-                className="collapsed-logo"
-              />
+              <img src="/blacklogo.png" alt="icon" className="collapsed-logo" />
             )}
 
             <span className="slider-icons">
