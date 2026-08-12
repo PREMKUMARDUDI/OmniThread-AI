@@ -251,6 +251,13 @@ button span {
   }
 }
 
+.history li span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
 .history li .fa-trash {
   font-size: 1rem;
 
