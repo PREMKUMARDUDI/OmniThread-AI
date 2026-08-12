@@ -1,6 +1,6 @@
 # OmniThread
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-success)](#)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success)](https://omnithread-ai.vercel.app/)
 
 A modern, full-stack AI conversational platform inspired by Google Gemini.  
 Built with React, Node.js, MongoDB, Express—and features a powerful **stateful context engine** that seamlessly maintains conversational memory, alongside a robust MVC backend with strict IDOR security protections.
@@ -172,8 +172,8 @@ OmniThread/
 
 The application's frontend is deployed on **Vercel** with its backend deployed on **Render** platform:
 
-- **Frontend**: `#`
-- **Backend API**: `#`
+- **Frontend**: `https://omnithread-ai.vercel.app/`
+- **Backend API**: `https://omnithread-ai-backend.onrender.com`
 
 ### Deployment Configuration
 
