@@ -94,9 +94,15 @@ export const handleChat = async (req, res) => {
     let isNewThread = !thread ? true : false;
 
     if (!thread) {
+      let generatedTitle = message.split("\n")[0].trim();
+
+      if (generatedTitle.length > 30) {
+        generatedTitle = generatedTitle.substring(0, 30) + "...";
+      }
+
       thread = new Thread({
         threadId,
-        title: message,
+        title: generatedTitle,
         userId: req.user.id,
         messages: [{ role: "user", content: message }],
       });
