@@ -105,6 +105,10 @@ OmniThread/
 │   │   ├── Modals/
 │   │   │   ├── AuthModal.jsx          # Auth edit overlay
 │   │   │   └── ProfileModal.jsx       # Profile edit overlay
+│   │   ├── styles/
+│   │   │   ├── Chat.css               # CSS for Chat.jsx
+│   │   │   ├── ChatWindow.css         # CSS for ChatWindow.jsx
+│   │   │   └── Sidebar.css            # CSS for Sidebar.jsx
 │   │   └── App.jsx                    # React entry point
 │   ├── package.json                   # Frontend dependencies
 │   └── vite.config.js                 # Vite build configuration
