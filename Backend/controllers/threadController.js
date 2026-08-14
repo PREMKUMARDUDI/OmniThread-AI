@@ -94,7 +94,12 @@ export const handleChat = async (req, res) => {
     let isNewThread = !thread ? true : false;
 
     if (!thread) {
-      let generatedTitle = message.split("\n")[0].trim();
+      const textLines = message
+        .split("\n")
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0);
+
+      let generatedTitle = textLines.length > 0 ? textLines[0] : "New Chat";
 
       if (generatedTitle.length > 30) {
         generatedTitle = generatedTitle.substring(0, 30) + "...";
